@@ -9,8 +9,6 @@ namespace Zamm.Domain.Entities
 
         public Guid PersonId { get; set; }
         public virtual Person Person { get; set; } = null!;
-
-        public DateTime? DeletedAt { get; set; }
     }
 
     public static class CompanyPersonModelBuilderExtensions

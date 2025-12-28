@@ -59,6 +59,8 @@ builder.Services.AddScoped<IBaseRepository<LiabilityAsset>, BaseRepository<Liabi
 
 // Register Company
 builder.Services.AddScoped<IBaseRepository<Company>, BaseRepository<Company>>();
+builder.Services.AddScoped<IBaseRepository<CompanyPerson>, BaseRepository<CompanyPerson>>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
 
 // Register Liability
 builder.Services.AddScoped<ILiabilityService, LiabilityService>();

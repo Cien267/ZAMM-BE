@@ -19,14 +19,12 @@ namespace Zamm.Application.ImplementService
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly IBaseRepository<User> _baseUserRepository;
         private readonly IBaseRepository<Dependent> _baseDependentRepository;
-        private readonly IBaseRepository<Address> _baseAddressRepository;
         private readonly IAddressService _addressService;
         public PersonService(
             IBaseRepository<Person> basePersonRepository, 
             IPersonRepository personRepository, 
             IBaseRepository<User> baseUserRepository,
             IBaseRepository<Dependent> baseDependentRepository,
-            IBaseRepository<Address> baseAddressRepository, 
             IHttpContextAccessor contextAccessor,
             IAddressService addressService)
         {
@@ -35,7 +33,6 @@ namespace Zamm.Application.ImplementService
             _baseUserRepository = baseUserRepository;
             _baseDependentRepository = baseDependentRepository;
             _contextAccessor = contextAccessor;
-            _baseAddressRepository = baseAddressRepository;
             _addressService = addressService;
         }
 
