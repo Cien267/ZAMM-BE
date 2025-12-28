@@ -76,6 +76,12 @@ builder.Services.AddScoped<IBaseRepository<Loan>, BaseRepository<Loan>>();
 // Register InterestRate
 builder.Services.AddScoped<IBaseRepository<InterestRate>, BaseRepository<InterestRate>>();
 
+// Register Brokerage
+builder.Services.AddScoped<IBaseRepository<Brokerage>, BaseRepository<Brokerage>>();
+builder.Services.AddScoped<IBaseRepository<BrokerageLogo>, BaseRepository<BrokerageLogo>>();
+builder.Services.AddScoped<IBaseRepository<Invitation>, BaseRepository<Invitation>>();
+builder.Services.AddScoped<IBrokerageService, BrokerageService>();
+
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 builder.Services.AddSingleton(emailConfig);
 
