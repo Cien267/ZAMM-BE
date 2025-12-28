@@ -8,8 +8,6 @@ namespace Zamm.Domain.Entities
         public virtual Lender Lender { get; set; } = null!;
 
         public string Name { get; set; } = null!;
-        public DateTime? DeletedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
 
         public virtual ICollection<InterestRate> InterestRates { get; set; } = new List<InterestRate>();
         public virtual ICollection<Liability> Liabilities { get; set; } = new List<Liability>();

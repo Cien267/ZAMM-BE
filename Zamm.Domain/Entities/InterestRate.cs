@@ -9,8 +9,6 @@ namespace Zamm.Domain.Entities
 
         public string RateType { get; set; } = null!;
         public decimal Rate { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? DeletedAt { get; set; }
     }
 
     public static class InterestRateModelBuilderExtensions

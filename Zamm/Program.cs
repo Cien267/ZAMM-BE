@@ -62,11 +62,19 @@ builder.Services.AddScoped<IBaseRepository<Company>, BaseRepository<Company>>();
 
 // Register Liability
 builder.Services.AddScoped<ILiabilityService, LiabilityService>();
-builder.Services.AddScoped<IBaseRepository<Loan>, BaseRepository<Loan>>();
 builder.Services.AddScoped<IBaseRepository<Liability>, BaseRepository<Liability>>();
 builder.Services.AddScoped<IBaseRepository<FixedRatePeriod>, BaseRepository<FixedRatePeriod>>();
 builder.Services.AddScoped<IBaseRepository<LiabilityPerson>, BaseRepository<LiabilityPerson>>();
 builder.Services.AddScoped<IBaseRepository<LiabilityCompany>, BaseRepository<LiabilityCompany>>();
+
+// Register Lender
+builder.Services.AddScoped<IBaseRepository<Lender>, BaseRepository<Lender>>();
+
+// Register Loan
+builder.Services.AddScoped<IBaseRepository<Loan>, BaseRepository<Loan>>();
+
+// Register InterestRate
+builder.Services.AddScoped<IBaseRepository<InterestRate>, BaseRepository<InterestRate>>();
 
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 builder.Services.AddSingleton(emailConfig);
