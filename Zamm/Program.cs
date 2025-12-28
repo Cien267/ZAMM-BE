@@ -89,6 +89,10 @@ builder.Services.AddScoped<IBaseRepository<Event>, BaseRepository<Event>>();
 builder.Services.AddScoped<IBaseRepository<EventFile>, BaseRepository<EventFile>>();
 builder.Services.AddScoped<IEventService, EventService>();
 
+// Register Note
+builder.Services.AddScoped<IBaseRepository<Note>, BaseRepository<Note>>();
+builder.Services.AddScoped<INoteService, NoteService>();
+
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 builder.Services.AddSingleton(emailConfig);
 
