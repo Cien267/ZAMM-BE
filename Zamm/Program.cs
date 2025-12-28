@@ -61,7 +61,12 @@ builder.Services.AddScoped<IBaseRepository<LiabilityAsset>, BaseRepository<Liabi
 builder.Services.AddScoped<IBaseRepository<Company>, BaseRepository<Company>>();
 
 // Register Liability
+builder.Services.AddScoped<ILiabilityService, LiabilityService>();
+builder.Services.AddScoped<IBaseRepository<Loan>, BaseRepository<Loan>>();
 builder.Services.AddScoped<IBaseRepository<Liability>, BaseRepository<Liability>>();
+builder.Services.AddScoped<IBaseRepository<FixedRatePeriod>, BaseRepository<FixedRatePeriod>>();
+builder.Services.AddScoped<IBaseRepository<LiabilityPerson>, BaseRepository<LiabilityPerson>>();
+builder.Services.AddScoped<IBaseRepository<LiabilityCompany>, BaseRepository<LiabilityCompany>>();
 
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 builder.Services.AddSingleton(emailConfig);
