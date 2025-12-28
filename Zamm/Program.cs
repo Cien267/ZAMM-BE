@@ -82,6 +82,11 @@ builder.Services.AddScoped<IBaseRepository<BrokerageLogo>, BaseRepository<Broker
 builder.Services.AddScoped<IBaseRepository<Invitation>, BaseRepository<Invitation>>();
 builder.Services.AddScoped<IBrokerageService, BrokerageService>();
 
+// Register Event
+builder.Services.AddScoped<IBaseRepository<Event>, BaseRepository<Event>>();
+builder.Services.AddScoped<IBaseRepository<EventFile>, BaseRepository<EventFile>>();
+builder.Services.AddScoped<IEventService, EventService>();
+
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 builder.Services.AddSingleton(emailConfig);
 

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Zamm.Application.InterfaceService;
 using Zamm.Application.Payloads.InputModels.Brokerage;
@@ -9,6 +11,7 @@ using Zamm.Shared.Models;
 namespace Zamm.Controllers;
 
 [ApiController]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/brokerage")]
 public class BrokerageController : ControllerBase
 {

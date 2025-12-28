@@ -32,10 +32,6 @@ namespace Zamm.Domain.Entities
         public Guid? CompanyId { get; set; }
         public virtual Company? Company { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime? DeletedAt { get; set; }
-
         public virtual ICollection<EventFile> Files { get; set; } = new List<EventFile>();
     }
 
