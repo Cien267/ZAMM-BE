@@ -7,10 +7,6 @@ namespace Zamm.Domain.Entities
         public Guid LiabilityId { get; set; }
         public virtual Liability Liability { get; set; } = null!;
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime? DeletedAt { get; set; }
-
         public DateTime StartDate { get; set; }
         public int Term { get; set; }
         public decimal? CustomRate { get; set; }
@@ -47,7 +43,7 @@ namespace Zamm.Domain.Entities
                     .IsRequired();
 
                 entity.Property(e => e.CustomRate)
-                    .HasColumnType("decimal(5,4)");
+                    .HasColumnType("decimal(5,2)");
 
                 entity.HasOne(e => e.Liability)
                     .WithMany(l => l.FixedRatePeriods)

@@ -29,7 +29,7 @@ namespace Zamm.Domain.Entities
 
                 entity.Property(e => e.Rate)
                     .IsRequired()
-                    .HasColumnType("decimal(5,4)");
+                    .HasColumnType("decimal(5,2)");
 
                 entity.Property(e => e.CreatedAt)
                     .IsRequired()

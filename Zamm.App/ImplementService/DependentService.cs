@@ -78,9 +78,9 @@ public class DependentService : IDependentService
         return await GetDependentByIdAsync(dependent.Id);
     }
 
-    public async Task<DependentResult> UpdateDependentAsync(UpdateDependentInput request)
+    public async Task<DependentResult> UpdateDependentAsync(Guid dependentId, UpdateDependentInput request)
     {
-        var dependent = await _baseDependentRepository.GetByIdAsync(request.Id);
+        var dependent = await _baseDependentRepository.GetByIdAsync(dependentId);
         if (dependent == null)
         {
             throw new ResponseErrorObject("Dependent not found", StatusCodes.Status404NotFound);

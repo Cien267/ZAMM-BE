@@ -11,7 +11,6 @@ namespace Zamm.Domain.Entities
         public virtual Company Company { get; set; } = null!;
 
         public decimal Percent { get; set; }
-        public DateTime? DeletedAt { get; set; }
     }
 
     public static class LiabilityCompanyModelBuilderExtensions

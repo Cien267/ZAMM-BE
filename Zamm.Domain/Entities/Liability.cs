@@ -75,7 +75,7 @@ namespace Zamm.Domain.Entities
                     .IsRequired(false);
 
                 entity.Property(e => e.IntroRatePercent)
-                    .HasColumnType("decimal(5,4)");
+                    .HasColumnType("decimal(5,2)");
 
                 entity.Property(e => e.RepaymentAmount)
                     .HasColumnType("decimal(18,2)");
@@ -84,10 +84,10 @@ namespace Zamm.Domain.Entities
                     .HasMaxLength(50);
 
                 entity.Property(e => e.DiscountPercent)
-                    .HasColumnType("decimal(5,4)");
+                    .HasColumnType("decimal(5,2)");
 
                 entity.Property(e => e.SettlementRate)
-                    .HasColumnType("decimal(5,4)");
+                    .HasColumnType("decimal(5,2)");
 
                 entity.Property(e => e.BankAccountName)
                     .HasMaxLength(200);
