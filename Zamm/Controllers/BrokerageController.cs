@@ -39,23 +39,13 @@ public class BrokerageController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<BrokerageResult>> CreateBrokerageAsync([FromBody] CreateBrokerageInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _brokerageService.CreateBrokerageAsync(request);
-        return CreatedAtAction(nameof(GetBrokerageByIdAsync), new { id = result.Id }, result);
+        return Ok(result);
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult<BrokerageResult>> UpdateBrokerageAsync(Guid id, [FromBody] UpdateBrokerageInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _brokerageService.UpdateBrokerageAsync(id, request);
         return Ok(result);
     }
@@ -70,11 +60,6 @@ public class BrokerageController : ControllerBase
     [HttpPost("invitations")]
     public async Task<ActionResult<InvitationResult>> CreateInvitationAsync([FromBody] CreateInvitationInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _brokerageService.CreateInvitationAsync(request);
         return Ok(result);
     }

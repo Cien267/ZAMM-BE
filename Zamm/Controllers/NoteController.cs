@@ -34,23 +34,13 @@ public class NoteController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<NoteResult>> CreateNoteAsync([FromBody] CreateNoteInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _noteService.CreateNoteAsync(request);
-        return CreatedAtAction(nameof(GetNoteByIdAsync), new { id = result.Id }, result);
+        return Ok(result);
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult<NoteResult>> UpdateNoteAsync(Guid id, [FromBody] UpdateNoteInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _noteService.UpdateNoteAsync(id, request);
         return Ok(result);
     }

@@ -36,11 +36,6 @@ namespace Zamm.Controllers
         [HttpPost]
         public async Task<ActionResult<PersonResult>> CreatePersonAsync([FromBody] CreatePersonInput request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var result = await _personService.CreatePersonAsync(request);
             return Ok(result);
         }
@@ -48,11 +43,6 @@ namespace Zamm.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<PersonResult>> UpdatePersonAsync(Guid id, [FromBody] UpdatePersonInput request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var result = await _personService.UpdatePersonAsync(id, request);
             return Ok(result);
         }

@@ -36,11 +36,6 @@ namespace Zamm.Controllers
         [HttpPost]
         public async Task<ActionResult<AssetResult>> CreateAssetAsync([FromBody] CreateAssetInput request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var result = await _assetService.CreateAssetAsync(request);
             return Ok(result);
         }
@@ -48,11 +43,6 @@ namespace Zamm.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<AssetResult>> UpdateAssetAsync(Guid id, [FromBody] UpdateAssetInput request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var result = await _assetService.UpdateAssetAsync(id, request);
             return Ok(result);
         }

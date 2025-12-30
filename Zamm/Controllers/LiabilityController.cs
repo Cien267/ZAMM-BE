@@ -36,11 +36,6 @@ namespace Zamm.Controllers
         [HttpPost]
         public async Task<ActionResult<LiabilityResult>> CreateLiabilityAsync([FromBody] CreateLiabilityInput request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var result = await _liabilityService.CreateLiabilityAsync(request);
             return Ok(result);
         }
@@ -48,11 +43,6 @@ namespace Zamm.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<LiabilityResult>> UpdateLiabilityAsync(Guid id, [FromBody] UpdateLiabilityInput request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var result = await _liabilityService.UpdateLiabilityAsync(id, request);
             return Ok(result);
         }

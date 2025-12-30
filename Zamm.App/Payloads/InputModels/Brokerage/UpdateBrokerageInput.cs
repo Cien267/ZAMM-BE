@@ -5,6 +5,9 @@ namespace Zamm.Application.Payloads.InputModels.Brokerage;
 public class UpdateBrokerageInput
 {
     [Required]
+    public Guid Id { get; set; }
+    
+    [Required]
     [MaxLength(200)]
     public string Name { get; set; } = null!;
     

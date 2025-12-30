@@ -54,11 +54,6 @@ namespace Zamm.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] UpdateUserInput request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var result = await _authService.UpdateUserAsync(userId, request);
             return Ok(result);
         }
@@ -68,6 +63,14 @@ namespace Zamm.Controllers
         public async Task<IActionResult> ChangePassword([FromRoute] Guid userId, [FromBody] ChangePasswordInput request)
         {
             var result = await _authService.ChangePasswordAsync(userId, request);
+            return Ok(result);
+        }
+        
+        [HttpGet("get-all-users")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetAllUser()
+        {
+            var result = await _authService.GetAllUserAsync();
             return Ok(result);
         }
 

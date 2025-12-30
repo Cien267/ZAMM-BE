@@ -6,6 +6,9 @@ namespace Zamm.Application.Payloads.InputModels.Person;
 
 public class UpdatePersonInput
 {
+    [Required]
+    public Guid Id { get; set; }
+    
     public string? Title { get; set; }
     
     [Required]

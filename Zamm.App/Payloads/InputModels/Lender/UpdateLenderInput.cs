@@ -5,6 +5,9 @@ namespace Zamm.Application.Payloads.InputModels.Lender;
 public class UpdateLenderInput
 {
     [Required]
+    public Guid Id { get; set; }
+    
+    [Required]
     [MaxLength(200)]
     public string Name { get; set; } = null!;
     

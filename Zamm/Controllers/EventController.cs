@@ -37,23 +37,13 @@ public class EventController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<EventResult>> CreateEventAsync([FromBody] CreateEventInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _eventService.CreateEventAsync(request);
-        return CreatedAtAction(nameof(GetEventByIdAsync), new { id = result.Id }, result);
+        return Ok(result);
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult<EventResult>> UpdateEventAsync(Guid id, [FromBody] UpdateEventInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _eventService.UpdateEventAsync(id, request);
         return Ok(result);
     }

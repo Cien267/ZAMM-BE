@@ -13,6 +13,7 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
 using Zamm.Application;
+using Zamm.Application.Payloads.Responses;
 using Zamm.Data;
 using Zamm.Middlewares;
 
@@ -71,9 +72,11 @@ builder.Services.AddScoped<IBaseRepository<LiabilityCompany>, BaseRepository<Lia
 
 // Register Lender
 builder.Services.AddScoped<IBaseRepository<Lender>, BaseRepository<Lender>>();
+builder.Services.AddScoped<ILenderService, LenderService>();
 
 // Register Loan
 builder.Services.AddScoped<IBaseRepository<Loan>, BaseRepository<Loan>>();
+builder.Services.AddScoped<ILoanService, LoanService>();
 
 // Register InterestRate
 builder.Services.AddScoped<IBaseRepository<InterestRate>, BaseRepository<InterestRate>>();
@@ -132,7 +135,25 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]))
     };
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            var errors = context.ModelState
+                .Where(e => e.Value?.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+
+            throw new ResponseErrorObject(
+                "Validation failed", 
+                StatusCodes.Status400BadRequest, 
+                errors
+            );
+        };
+    });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>

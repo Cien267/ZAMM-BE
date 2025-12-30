@@ -4,6 +4,8 @@ namespace Zamm.Application.Payloads.InputModels.Dependent;
 
 public class UpdateDependentInput
 {
+    [Required]
+    public Guid Id { get; set; }
     
     [Required]
     [MaxLength(200)]

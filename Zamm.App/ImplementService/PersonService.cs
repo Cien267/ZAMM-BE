@@ -70,6 +70,11 @@ namespace Zamm.Application.ImplementService
                     (p.PhoneWork != null && p.PhoneWork.Contains(phone)));
             }
             
+            if (personQuery.BrokerId.HasValue)
+            {
+                query = query.Where(c => c.BrokerId == personQuery.BrokerId.Value);
+            }
+            
             var totalCount = await query.CountAsync();
             
             query = _basePersonRepository.ApplySorting(query, personQuery.SortBy, personQuery.SortDescending);

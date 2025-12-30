@@ -36,11 +36,6 @@ public class LenderController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<LenderResult>> CreateLenderAsync([FromBody] CreateLenderInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _lenderService.CreateLenderAsync(request);
         return Ok(result);
     }
@@ -48,11 +43,6 @@ public class LenderController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult<LenderResult>> UpdateLenderAsync(Guid id, [FromBody] UpdateLenderInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _lenderService.UpdateLenderAsync(id, request);
         return Ok(result);
     }

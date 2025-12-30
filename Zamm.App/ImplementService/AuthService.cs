@@ -10,6 +10,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
+using Microsoft.EntityFrameworkCore;
 using Zamm.Application.Handle.HandleEmail;
 using Zamm.Application.InterfaceService;
 using Zamm.Application.Payloads.RequestModels.UserRequests;
@@ -501,6 +502,19 @@ namespace Zamm.Application.ImplementService
             {
                 throw new ResponseErrorObject(ex.Message, StatusCodes.Status400BadRequest);
             }
+        }
+
+        public async Task<List<UserResult>> GetAllUserAsync()
+        {
+            var users = await _baseUserRepository
+                .BuildQueryable(
+                    new List<string> { "Brokerage" },
+                    null
+                )
+                .Select(UserResult.FromUser)
+                .ToListAsync();
+    
+            return users;
         }
 
     }

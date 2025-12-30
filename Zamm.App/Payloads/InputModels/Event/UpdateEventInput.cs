@@ -5,6 +5,9 @@ namespace Zamm.Application.Payloads.InputModels.Event;
 public class UpdateEventInput
 {
     [Required]
+    public Guid Id { get; set; }
+    
+    [Required]
     [MaxLength(500)]
     public string Title { get; set; } = null!;
     

@@ -6,6 +6,9 @@ namespace Zamm.Application.Payloads.InputModels.Company;
 public class UpdateCompanyInput
 {
     [Required]
+    public Guid Id { get; set; }
+    
+    [Required]
     [MaxLength(200)]
     public string Name { get; set; } = null!;
     

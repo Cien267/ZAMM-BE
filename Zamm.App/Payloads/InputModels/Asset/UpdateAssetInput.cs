@@ -7,6 +7,9 @@ namespace Zamm.Application.Payloads.InputModels.Asset;
 public class UpdateAssetInput
 {
     [Required]
+    public Guid Id { get; set; }
+    
+    [Required]
     [MaxLength(200)]
     public string Name { get; set; } = null!;
     

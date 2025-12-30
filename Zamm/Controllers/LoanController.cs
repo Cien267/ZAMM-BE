@@ -36,11 +36,6 @@ public class LoanController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<LoanResult>> CreateLoanAsync([FromBody] CreateLoanInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _loanService.CreateLoanAsync(request);
         return Ok(result);
     }
@@ -48,11 +43,6 @@ public class LoanController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult<LoanResult>> UpdateLoanAsync(Guid id, [FromBody] UpdateLoanInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _loanService.UpdateLoanAsync(id, request);
         return Ok(result);
     }

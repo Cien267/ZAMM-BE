@@ -5,6 +5,9 @@ namespace Zamm.Application.Payloads.InputModels.Note;
 public class UpdateNoteInput
 {
     [Required]
+    public Guid Id { get; set; }
+    
+    [Required]
     public string Text { get; set; } = null!;
     
     [Required]

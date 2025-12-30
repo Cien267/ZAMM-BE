@@ -18,5 +18,7 @@ namespace Zamm.Application.InterfaceService
         Task<ResponseObject<UserResult>> ChangePasswordAsync(Guid userId, ChangePasswordInput request);
         Task<string> AddRolesToUser(Guid userId, List<string> roles);
         Task LogoutAsync();
+
+        Task<List<UserResult>> GetAllUserAsync();
     }
 }

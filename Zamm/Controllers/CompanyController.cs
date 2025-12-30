@@ -37,23 +37,13 @@ public class CompanyController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<CompanyResult>> CreateCompanyAsync([FromBody] CreateCompanyInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _companyService.CreateCompanyAsync(request);
-        return CreatedAtAction(nameof(GetCompanyByIdAsync), new { id = result.Id }, result);
+        return Ok(result);
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult<CompanyResult>> UpdateCompanyAsync(Guid id, [FromBody] UpdateCompanyInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _companyService.UpdateCompanyAsync(id, request);
         return Ok(result);
     }

@@ -33,29 +33,14 @@ public class DependentController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<DependentResult>> CreateDependentAsync([FromBody] CreateDependentInput request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var result = await _dependentService.CreateDependentAsync(request);
-        return CreatedAtAction(nameof(GetDependentByIdAsync), new { id = result.Id }, result);
+        return Ok(result);
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult<DependentResult>> UpdateDependentAsync(Guid id, [FromBody] UpdateDependentInput request)
     {
-        if (id != request.Id)
-        {
-            return BadRequest(new { message = "ID in URL does not match ID in request body" });
-        }
-
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
-        var result = await _dependentService.UpdateDependentAsync(request);
+        var result = await _dependentService.UpdateDependentAsync(id, request);
         return Ok(result);
     }
 

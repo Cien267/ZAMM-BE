@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zamm.Infrastructure.DataContext;
 
@@ -11,9 +12,11 @@ using Zamm.Infrastructure.DataContext;
 namespace Zamm.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251229042354_UpdateTypeRateForInterestRate")]
+    partial class UpdateTypeRateForInterestRate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -773,7 +776,7 @@ namespace Zamm.Migrations
                         .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<decimal?>("CustomRate")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(5,4)");
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
@@ -975,7 +978,7 @@ namespace Zamm.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal?>("DiscountPercent")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(5,4)");
 
                     b.Property<string>("FinancePurpose")
                         .HasMaxLength(200)
@@ -988,7 +991,7 @@ namespace Zamm.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal?>("IntroRatePercent")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(5,4)");
 
                     b.Property<int?>("IntroRateYears")
                         .HasColumnType("int");
@@ -1019,7 +1022,7 @@ namespace Zamm.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal?>("SettlementRate")
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(5,4)");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("date");
